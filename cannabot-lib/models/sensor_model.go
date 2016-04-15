@@ -7,7 +7,8 @@ type Sensor interface {
 }
 
 type Sensor_Base struct {
-    Type        string  `json:"type"`
+    Name        string      `json:"name"`
+    Type        string      `json:"type"`
 }
 
 type PSISensor struct {
@@ -15,8 +16,9 @@ type PSISensor struct {
 }
 
 // PSISensor Constructor
-func NewPSISensor() *PSISensor {
+func NewPSISensor(name string) *PSISensor {
     ret := &PSISensor{}
+    ret.Name = name
     ret.Type = "psi_sensor"
     return ret
 }
@@ -27,17 +29,18 @@ func (psis PSISensor) TypeString() string {
     return psis.Type
 }
 
-type ThermometerSensor struct {
+type TempSensor struct {
     Sensor_Base
 }
 
-func NewThermometerSensor() *ThermometerSensor {
-    ret := &ThermometerSensor{}
-    ret.Type = "themometer_sensor"
+func NewTempSensor(name string) *TempSensor {
+    ret := &TempSensor{}
+    ret.Name = name
+    ret.Type = "temperature_sensor"
     return ret
 }
 
-func (ts ThermometerSensor) TypeString() string {
+func (ts TempSensor) TypeString() string {
     return ts.Type
 }
 

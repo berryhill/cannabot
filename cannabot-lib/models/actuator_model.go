@@ -5,25 +5,25 @@ package models
 import()
 
 type Actuator_Base struct {
-    Type        string      `json:"type"`
+        Name 		string		`json:"name"`
+	Type   		string 		`json:"type"`
 }
 
 type Actuator interface {
-    TypeString()
+	TypeString() string
 }
 
 type OnOffValveActuator struct {
-    Actuator_Base
+	Actuator_Base
 }
 
-func (oova OnOffValveActuator) NewOnOffValveActuator() *OnOffValveActuator {
-    ret := &OnOffValveActuator{}
-    ret.Type = "on_off_valve_actuator"
-    return ret
+func NewOnOffValveActuator(name string) *OnOffValveActuator {
+	ret := &OnOffValveActuator{}
+	ret.Name = name
+	ret.Type = "on_off_valve_actuator"
+	return ret
 }
 
 func (oova OnOffValveActuator) TypeString() string {
-    return oova.Type
+	return oova.Type
 }
-
-

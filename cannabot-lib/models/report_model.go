@@ -4,7 +4,8 @@ import (
 )
 
 type Report struct {
-Id		string		`json:"id`
+	Name		string		`json:"name`
+	Id		int		`json:"id`
 //	RawData		string		`json:"raw_data"`
 }
 
@@ -14,8 +15,14 @@ func SendReport(r Report) {
 }
 */
 
+
+func (r *Report)addName(n string) {
+	//TODO Implement
+}
+
 func InitTestReport() *Report {
-report := new(Report)
-report.Id = "Test Report"
-return report
+	report := new(Report)
+	report.Name = "Test Report"
+	report.Id = -1
+	return report
 }

@@ -8,13 +8,15 @@ package models
 import ()
 
 type Machine_Base struct {
-	Name        string          `json:"name"`
-	Sensors     []interface{}   `json:"sensors"`
-    	Actuators   []interface{}   `json:"actuators"`
+	Name        	string          	`json:"name"`
+	Sensors     	[]Sensor	   	`json:"sensors"`
+	Actuators   	[]Actuator   		`json:"actuators"`
+	Buttons 	[]Button		`json:"buttons"`
+	Indicators	[]Indicator		`json:"indicators"`
 }
 
 type Machine struct {
-    Machine_Base
+	Machine_Base
 }
 
 func (m *Machine) AddSensor(s *Sensor) {
@@ -23,4 +25,17 @@ func (m *Machine) AddSensor(s *Sensor) {
 
 func (m *Machine) AddActuator(a *Actuator) {
 	//TODO Implement
+}
+
+func InitTestMachine() *Machine {
+	machine := new(Machine)
+	machine.Name = "Test Machine"
+
+	machine.Sensors = append(machine.Sensors, NewPSISensor("Test PSI Sensor"))
+	machine.Sensors = append(machine.Sensors, NewTempSensor("Test Temperature Sensor"))
+	machine.Actuators = append(machine.Actuators, NewOnOffValveActuator("Test OnOff Valve"))
+	machine.Buttons = append(machine.Buttons, NewToggleButton("Test Toggle Button"))
+	machine.Indicators = append(machine.Indicators, NewLEDIndicator("Test LED"))
+
+	return machine
 }

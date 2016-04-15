@@ -16,7 +16,23 @@ type MachineOperator struct {
 }
 
 func (mo *MachineOperator) Get(/*r *Report*/) {
-	fmt.Println("Get")
+	fmt.Println("MachineOperator.Get")
+
+	var ReportList []*models.Report
+
+	for k := 0; k < 5; k++ {
+		fmt.Println(k)
+		report := models.InitTestReport()
+		report.Id = k
+		ReportList = append(ReportList, report)
+	}
+	fmt.Println(ReportList)
+
+	machine := *models.InitTestMachine()
+
+	mo.Data["json"] = &machine
+	mo.ServeJSON()
+//	mo.TplName = "index.tpl"
 }
 
 
@@ -25,11 +41,13 @@ func (mo *MachineOperator) SendReport() {
 //	ctx := context.Context{Request: req, ResponseWriter: rw}
 //	out := context.NewOutput()
 
-//	report := models.InitTestReport()
 //	out.JSON(report, true, false)
 
-//	mo.Data["json"] = &json.Marshal(report)
-//	mo.ServeJSON()
+	report := models.InitTestReport()
+
+	mo.Data["json"] = &report
+	mo.ServeJSON()
+	mo.TplName = "index.tpl"
 
 //	fmt.Println("Hello")
 }
