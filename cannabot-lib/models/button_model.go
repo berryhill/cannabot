@@ -26,3 +26,18 @@ func (led *ToggleButton) TypeString() string {
 	return led.Type
 }
 
+type PushButton struct {
+	Button_Base
+}
+
+func NewPushButton(name string) *PushButton {
+	ret := &PushButton{}
+	ret.Name = name
+	ret.Type = "push_button"
+	return ret
+}
+
+func (led *PushButton) TypeString() string {
+	return led.Type
+}
+
