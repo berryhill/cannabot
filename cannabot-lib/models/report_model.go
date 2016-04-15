@@ -22,3 +22,4 @@ func InitTestReport() *Report {
 	report.Id = -1
 	return report
 }
+

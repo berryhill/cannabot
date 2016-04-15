@@ -47,7 +47,7 @@ func (mo *MachineOperator) SendReport(/*r *Report*/) {
 
 //	mo.Data["json"] = &report
 //	mo.ServeJSON()
-///	mo.TplName = "index.tpl"
+//	mo.TplName = "index.tpl"
 
 //	fmt.Println("Hello")
 }
