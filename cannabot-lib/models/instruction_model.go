@@ -1,13 +1,17 @@
 package models
 
-import()
+import(
+)
 
 type Instruction_Base struct {
-    //TODO IMPLEMENT
+	BaseModel
 }
 
 type Instruction struct {
-	Name 		string		`json:"name"`
-	Id 		int		`json:"id"`
+	Name			string			`json:"name"`
+	Id 			int			`json:"id"`
+	Paremeters		[]*Parameter		`json:"parameters"`
 }
+
+
 

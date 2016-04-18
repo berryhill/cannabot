@@ -15,7 +15,7 @@ type WebOperator struct {
 	beego.Controller
 }
 
-func (wo *WebOperator) Get(/*r *Report*/) {
+func (wo *WebOperator) Get() {
 	wo.Data["Website"] = "gmail.com"
 	wo.Data["Email"] = "Matthew"
 	wo.TplName = "index.tpl"
@@ -33,7 +33,7 @@ func (wo *WebOperator) Post() {
 
 // THIS METHOD SHOULD WORK BUT NEED TO SEND IT SOMETHING!!
 func (wo *WebOperator) HandleNewMachine() {
-	req := wo.Ctx.Request     //in beego this.Ctx.Request points to the Http#Request
+	req := wo.Ctx.Request     //in beego this.Ctx.Request points to the HttpRequest
 	p := make([]byte, req.ContentLength)
 	_, err := wo.Ctx.Request.Body.Read(p)
 	if err == nil {
@@ -43,7 +43,6 @@ func (wo *WebOperator) HandleNewMachine() {
 			fmt.Println(newMachine)
 		} else {
 			fmt.Println("Unable to unmarshall the JSON request", err1);
-
 		}
 	}
 }
@@ -57,14 +56,14 @@ func (mo *WebOperator) SendInstructions() {
 	//fmt.Println(str)
 
 
-//	ctx := context.Context{Request: req, ResponseWriter: rw}
-//	out := context.NewOutput()
-
-//		out.JSON("{asdf: asdfasdf}", true, false)
-//		report := models.InitTestReport()
-//		out.JSON(report, true, false)
-
-//		mo.Data["json"] = &json.Marshal(report)
-//		mo.ServeJSON()
-	fmt.Println("SendReport()")
+	//ctx := context.Context{Request: req, ResponseWriter: rw}
+	//out := context.NewOutput()
+	//
+	//	out.JSON("{asdf: asdfasdf}", true, false)
+	//	report := models.InitTestReport()
+	//	out.JSON(report, true, false)
+	//
+	//	mo.Data["json"] = &json.Marshal(report)
+	//	mo.ServeJSON()
+	//fmt.Println("SendReport()")
 }
