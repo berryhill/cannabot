@@ -1,19 +1,23 @@
 package controllers
 
 import(
-//	"encoding/json"
+	"encoding/json"
 	"fmt"
+	"net/http"
 
 	"github.com/astaxie/beego"
 //	"github.com/astaxie/beego/httplib"
 //	"github.com/astaxie/beego/context"
 	models "cannabot/cannabot-lib/models"
-	"encoding/json"
 )
 
 type WebOperator struct {
 	beego.Controller
 }
+
+//type Foo struct {
+//	Bar string	`json:"bar"`
+//}
 
 func (wo *WebOperator) Get() {
 	wo.Data["Website"] = "gmail.com"
@@ -23,12 +27,31 @@ func (wo *WebOperator) Get() {
 	fmt.Println("Get")
 }
 
+func (wo *WebOperator) RequestMachine() {
+	fmt.Println("Request Machine")
+}
+
 func (wo *WebOperator) Post() {
+	fmt.Println("Post")
+	//foo1 := new(Foo) // or &Foo{}
+	//getJson("http://example.com/?bar=asdfasdf", foo1)
+	//println(foo1.Bar)
+
 	wo.HandleNewMachine()
 	json := wo.GetString("json")
 	if json == "" {
 		wo.Ctx.WriteString("json is empty")
 	}
+}
+
+func getJson(url string, target interface{}) error {
+	r, err := http.Get(url)
+	if err != nil {
+		return err
+	}
+	defer r.Body.Close()
+
+	return json.NewDecoder(r.Body).Decode(target)
 }
 
 // THIS METHOD SHOULD WORK BUT NEED TO SEND IT SOMETHING!!

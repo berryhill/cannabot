@@ -7,6 +7,7 @@ import (
 	"github.com/astaxie/beego"
 //	"github.com/astaxie/beego/context"
 	"cannabot/cannabot-lib/models"
+	"net/http"
 )
 
 type MachineOperator struct {
@@ -20,7 +21,11 @@ type MachineOperator struct {
 // VVVV TOTAL SHITSHOW VVVV
 
 func (mo *MachineOperator) Get() {
-	fmt.Println("MachineOperator.Get")
+	response, err := http.Get("http://localhost:8080/test")
+
+	if err != nil {
+		fmt.Println(response)
+	}
 
 	var reportList []*models.Report
 
@@ -49,5 +54,5 @@ func (mo *MachineOperator) SendReport(/*r *Report*/) {
 //	mo.ServeJSON()
 //	mo.TplName = "index.tpl"
 
-//	fmt.Println("Hello")
+	fmt.Println("Hello")
 }

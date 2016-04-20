@@ -10,8 +10,10 @@ type Instruction_Base struct {
 type Instruction struct {
 	Name			string			`json:"name"`
 	Id 			int			`json:"id"`
-	Paremeters		[]*Parameter		`json:"parameters"`
+	Parameters		[]*Parameter		`json:"parameters"`
 }
+
+
 
 
 
