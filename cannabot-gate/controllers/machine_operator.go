@@ -15,7 +15,7 @@ type MachineOperator struct {
 	Instructions    	[]models.Instruction   	`json:"instructions"`
 	CurrentReport		*models.Report 		`json:"report"`
 	Machine 		*models.Machine		`json:"machine"`
-	Actions			*models.Action		`json:"actions"`
+	Actions			*models.Actioncd		`json:"actions"`
 }
 
 // VVVV TOTAL SHITSHOW VVVV
